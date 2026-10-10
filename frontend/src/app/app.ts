@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -15,27 +15,27 @@ interface Result { query: string; ad: Ad; validation: Validation; }
   styleUrl: './app.scss'
 })
 export class App {
-  query = '';
-  loading = false;
-  result: Result | null = null;
-  error = '';
+  query = signal('');
+  loading = signal(false);
+  result = signal<Result | null>(null);
+  error = signal('');
 
   async run(): Promise<void> {
-    this.loading = true;
-    this.error = '';
-    this.result = null;
+    this.loading.set(true);
+    this.error.set('');
+    this.result.set(null);
     try {
       const res = await fetch('http://localhost:4000/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: this.query })
+        body: JSON.stringify({ query: this.query() })
       });
       if (!res.ok) throw new Error(await res.text());
-      this.result = (await res.json()) as Result;
+      this.result.set((await res.json()) as Result);
     } catch (e) {
-      this.error = (e as Error).message;
+      this.error.set((e as Error).message);
     } finally {
-      this.loading = false;
+      this.loading.set(false);
     }
   }
 }

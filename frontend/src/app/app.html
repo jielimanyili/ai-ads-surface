@@ -1,16 +1,22 @@
 <h1>AI-Native Ads Surface</h1>
 <p class="sub">Query &rarr; Ad Agent &rarr; Validation Agent (LLM-as-judge)</p>
 
-<input [(ngModel)]="query" placeholder="e.g. best running shoes for marathon training" (keyup.enter)="run()" />
-<button (click)="run()" [disabled]="loading">{{ loading ? 'Generating…' : 'Generate & Validate' }}</button>
+<input
+  [ngModel]="query()"
+  (ngModelChange)="query.set($event)"
+  placeholder="e.g. best running shoes for marathon training"
+  (keyup.enter)="run()" />
+<button (click)="run()" [disabled]="loading()">{{ loading() ? 'Generating…' : 'Generate & Validate' }}</button>
 
-<p *ngIf="error" class="error">{{ error }}</p>
+@if (error()) {
+  <p class="error">{{ error() }}</p>
+}
 
-<ng-container *ngIf="result">
+@if (result(); as r) {
   <section class="ad">
-    <h2>{{ result.ad.headline }}</h2>
-    <p>{{ result.ad.body }}</p>
-    <button>{{ result.ad.callToAction }}</button>
+    <h2>{{ r.ad.headline }}</h2>
+    <p>{{ r.ad.body }}</p>
+    <button>{{ r.ad.callToAction }}</button>
   </section>
 
   <section class="validation">
@@ -20,22 +26,28 @@
         <tr><th>Metric</th><th>Score</th><th></th><th>Rationale</th></tr>
       </thead>
       <tbody>
-        <tr *ngFor="let s of result.validation.scores">
-          <td>{{ s.metric }}</td>
-          <td>{{ s.score | number:'1.2' }}</td>
-          <td>{{ s.passed ? '✓' : '✗' }}</td>
-          <td>{{ s.rationale }}</td>
-        </tr>
+        @for (s of r.validation.scores; track s.metric) {
+          <tr>
+            <td>{{ s.metric }}</td>
+            <td>{{ s.score | number:'1.2' }}</td>
+            <td>{{ s.passed ? '✓' : '✗' }}</td>
+            <td>{{ s.rationale }}</td>
+          </tr>
+        }
       </tbody>
     </table>
-    <p [ngClass]="result.validation.overallPass ? 'pass' : 'fail'">
-      Overall: {{ result.validation.overallPass ? 'PASS' : 'FAIL' }}
+    <p [ngClass]="r.validation.overallPass ? 'pass' : 'fail'">
+      Overall: {{ r.validation.overallPass ? 'PASS' : 'FAIL' }}
     </p>
-    <div *ngIf="result.validation.hallucinatedClaims.length">
-      <strong>Hallucinated claims:</strong>
-      <ul>
-        <li *ngFor="let h of result.validation.hallucinatedClaims">{{ h }}</li>
-      </ul>
-    </div>
+    @if (r.validation.hallucinatedClaims.length) {
+      <div>
+        <strong>Hallucinated claims:</strong>
+        <ul>
+          @for (h of r.validation.hallucinatedClaims; track h) {
+            <li>{{ h }}</li>
+          }
+        </ul>
+      </div>
+    }
   </section>
-</ng-container>
+}
