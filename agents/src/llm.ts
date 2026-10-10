@@ -1,3 +1,18 @@
+import fs from "fs";
+import path from "path";
+import dotenv from "dotenv";
+
+// Load .env from agents/ (preferred) or repo root, whichever exists first.
+for (const envPath of [
+  path.resolve(__dirname, "..", ".env"),
+  path.resolve(__dirname, "..", "..", ".env"),
+]) {
+  if (fs.existsSync(envPath)) {
+    dotenv.config({ path: envPath });
+    break;
+  }
+}
+
 export interface ChatMessage {
   role: "system" | "user" | "assistant";
   content: string;
