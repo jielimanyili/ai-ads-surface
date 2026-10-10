@@ -75,3 +75,4 @@ The CLI prints a full JSON result (ad + validation scores + hallucinated claims)
 - `agents/` — orchestrator, ad agent, validation agent, LLM client (OpenAI-compatible).
 - `frontend/` — Angular 22 surface.
 - `data/golden-set.json` — labeled evaluation examples (Phase 2).
+- `docs/architecture.md` — system design, evaluation methodology, and key decisions.
