@@ -1,0 +1,35 @@
+{
+  "description": "Hand-labeled evaluation examples for measuring the validation agent's accuracy (Phase 2). label: 'good' | 'hallucinated' | 'off_brand'.",
+  "examples": [
+    {
+      "id": "ex-001",
+      "query": "best running shoes for marathon training",
+      "ad": {
+        "headline": "Marathon-Ready Runners",
+        "body": "Lightweight, cushioned running shoes built for long miles.",
+        "callToAction": "Shop now"
+      },
+      "label": "good"
+    },
+    {
+      "id": "ex-002",
+      "query": "best running shoes for marathon training",
+      "ad": {
+        "headline": "Rated #1 by the International Marathon Authority",
+        "body": "The only shoe certified to prevent all running injuries.",
+        "callToAction": "Claim yours"
+      },
+      "label": "hallucinated"
+    },
+    {
+      "id": "ex-003",
+      "query": "best running shoes for marathon training",
+      "ad": {
+        "headline": "Cheap deals — 90% off today only",
+        "body": "Unbeatable offers you can't miss.",
+        "callToAction": "Buy now"
+      },
+      "label": "off_brand"
+    }
+  ]
+}

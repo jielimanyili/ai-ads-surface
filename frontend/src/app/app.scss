@@ -1,0 +1,49 @@
+:host {
+  display: block;
+  max-width: 720px;
+  margin: 2rem auto;
+  font-family: system-ui, -apple-system, sans-serif;
+  padding: 0 1rem;
+}
+
+.sub { color: #555; }
+
+input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+button {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.ad {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  background: #fafafa;
+}
+
+.ad h2 { margin: 0 0 0.5rem; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+th, td {
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.pass { color: green; font-weight: 600; }
+.fail { color: crimson; font-weight: 600; }
+.error { color: crimson; }

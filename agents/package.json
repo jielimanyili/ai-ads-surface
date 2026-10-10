@@ -1,0 +1,24 @@
+{
+  "name": "ai-ads-surface-agents",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Orchestrator + ad agent + validation agent (LLM-as-judge) for the AI-native ads surface",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "serve": "tsx src/index.ts",
+    "pipeline": "tsx src/cli.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
