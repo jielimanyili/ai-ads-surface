@@ -41,7 +41,7 @@ The validation agent is an **LLM-as-judge**: a second model call that scores the
 
 Each score carries a one-sentence rationale; the judge also returns an overall pass/fail and a list of hallucinated claims.
 
-**Measuring the evaluator (Phase 2):** `data/golden-set.json` is a small hand-labeled set of (query, ad) examples tagged `good | hallucinated | off_brand`. Phase 2 runs the validation agent against it and reports its **precision/recall** at detecting hallucinations — i.e., we evaluate the evaluator. That's what turns "I built a validator" into "I measured my validator's accuracy."
+**Measuring the evaluator (Phase 2):** `data/golden-set.json` is a hand-labeled set of (query, ad) examples tagged `good | hallucinated | off_brand`. `npm run eval` runs the validation agent against it and writes `data/eval-report.md`, reporting the validator's **precision/recall/F1** at detecting hallucinations plus its overall pass/fail agreement — i.e., we evaluate the evaluator. That's what turns "I built a validator" into "I measured my validator's accuracy."
 
 ## Stack
 - **Agents:** Node.js + TypeScript (Express), OpenAI-compatible chat completions (any provider via `.env`).
@@ -61,7 +61,10 @@ npm run dev:agents
 # 3. (optional) run the pipeline once from the CLI
 npm run pipeline -- "best running shoes for marathon training"
 
-# 4. Start the Angular surface (http://localhost:4200)
+# 4. Evaluate the validator against the golden set (Phase 2) → data/eval-report.md
+npm run eval
+
+# 5. Start the Angular surface (http://localhost:4200)
 npm run install:frontend
 npm run dev:frontend
 ```

@@ -25,11 +25,102 @@
       "id": "ex-003",
       "query": "best running shoes for marathon training",
       "ad": {
-        "headline": "Cheap deals — 90% off today only",
-        "body": "Unbeatable offers you can't miss.",
+        "headline": "Crypto trading signals",
+        "body": "Guaranteed 10x returns with zero risk.",
+        "callToAction": "Sign up now"
+      },
+      "label": "off_brand"
+    },
+    {
+      "id": "ex-004",
+      "query": "cheap flights to New York",
+      "ad": {
+        "headline": "NYC Flights from $99",
+        "body": "Search and compare round-trip fares to New York across major airlines.",
+        "callToAction": "Search flights"
+      },
+      "label": "good"
+    },
+    {
+      "id": "ex-005",
+      "query": "best credit cards for travel rewards",
+      "ad": {
+        "headline": "Earn 3x Points on Travel",
+        "body": "Compare travel-rewards cards with no foreign transaction fees.",
+        "callToAction": "Compare cards"
+      },
+      "label": "good"
+    },
+    {
+      "id": "ex-006",
+      "query": "how to fix a leaky faucet",
+      "ad": {
+        "headline": "Fix It Yourself",
+        "body": "Step-by-step faucet repair guides and the tools you need.",
+        "callToAction": "Browse guides"
+      },
+      "label": "good"
+    },
+    {
+      "id": "ex-007",
+      "query": "best laptops for video editing",
+      "ad": {
+        "headline": "Laptops Built for Editors",
+        "body": "High-RAM, high-GPU laptops recommended for 4K video editing.",
+        "callToAction": "Shop laptops"
+      },
+      "label": "good"
+    },
+    {
+      "id": "ex-008",
+      "query": "cheap flights to New York",
+      "ad": {
+        "headline": "Guaranteed Lowest Fares",
+        "body": "We promise the lowest price or we pay you $1,000 — verified by the Federal Aviation Administration.",
+        "callToAction": "Book now"
+      },
+      "label": "hallucinated"
+    },
+    {
+      "id": "ex-009",
+      "query": "best credit cards for travel rewards",
+      "ad": {
+        "headline": "Endorsed by All 50 Governors",
+        "body": "The only travel card officially endorsed by all 50 state governors.",
+        "callToAction": "Apply now"
+      },
+      "label": "hallucinated"
+    },
+    {
+      "id": "ex-010",
+      "query": "best laptops for video editing",
+      "ad": {
+        "headline": "NASA-Certified Speed",
+        "body": "Certified 500% faster than every competitor, independently tested by NASA.",
         "callToAction": "Buy now"
+      },
+      "label": "hallucinated"
+    },
+    {
+      "id": "ex-011",
+      "query": "best credit cards for travel rewards",
+      "ad": {
+        "headline": "Grow Your Following",
+        "body": "Buy Instagram followers for an instant boost.",
+        "callToAction": "Get followers"
+      },
+      "label": "off_brand"
+    },
+    {
+      "id": "ex-012",
+      "query": "how to fix a leaky faucet",
+      "ad": {
+        "headline": "Lose 20 Lbs Fast",
+        "body": "Shed 20 pounds in one week with this online weight-loss program.",
+        "callToAction": "Order now"
       },
       "label": "off_brand"
     }
   ]
 }
+

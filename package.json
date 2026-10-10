@@ -8,6 +8,7 @@
     "install:frontend": "cd frontend && npm install",
     "dev:agents": "cd agents && npm run dev",
     "dev:frontend": "cd frontend && npm start",
-    "pipeline": "cd agents && npm run pipeline"
+    "pipeline": "cd agents && npm run pipeline",
+    "eval": "cd agents && npm run eval"
   }
 }
