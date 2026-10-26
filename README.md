@@ -4,6 +4,10 @@ A demo of an **AI-native ads surface**: a user query flows through an **agent or
 
 > **Honest framing:** self-contained demo with synthetic, mock ad data. It is **not** production GenAI evaluation infrastructure. The validation agent and golden-set evaluation are hands-on, project-level evidence.
 
+## Live demo
+
+**https://frontend-ten-ashen-62.vercel.app** — static Vercel deploy. The Evaluation Dashboard is the default view and fully static (no backend / API key); the "Generate & Validate" view needs the agents backend.
+
 ## Architecture
 
 ```
@@ -81,12 +85,13 @@ The CLI prints a full JSON result (ad + validation scores + hallucinated claims)
 
 ## Deploy (static, Vercel)
 
-The frontend deploys as a **static site** to Vercel — the Evaluation Dashboard works out of the box; the generate flow needs the agents backend.
+The frontend is deployed as a **static site** to Vercel — the Evaluation Dashboard works out of the box; the generate flow needs the agents backend.
+
+**Production:** https://frontend-ten-ashen-62.vercel.app
 
 ```bash
 cd frontend
-npx vercel          # Root Directory = frontend (vercel.json already configured)
-npx vercel --prod   # production URL
+npx vercel --prod   # redeploy from the same source
 ```
 
 - `frontend/vercel.json` — build command + output dir (`dist/ai-ads-surface/browser`) + SPA rewrite.
