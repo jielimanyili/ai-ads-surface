@@ -24,7 +24,7 @@ A demo of an **AI-native ads surface**: a user query flows through an **agent or
                                                               ▼
                                                  ┌─────────────────────────┐
                                                  │   Angular surface        │
-                                                 │  (ad + validation view)  │
+                                                 │  (ad, validation, eval)  │
                                                  └─────────────────────────┘
 ```
 
@@ -43,9 +43,11 @@ Each score carries a one-sentence rationale; the judge also returns an overall p
 
 **Measuring the evaluator (Phase 2):** `data/golden-set.json` is a hand-labeled set of (query, ad) examples tagged `good | hallucinated | off_brand`. `npm run eval` runs the validation agent against it and writes `data/eval-report.md`, reporting the validator's **precision/recall/F1** at detecting hallucinations plus its overall pass/fail agreement — i.e., we evaluate the evaluator. That's what turns "I built a validator" into "I measured my validator's accuracy."
 
+The frontend's **Evaluation Dashboard** visualizes those results — KPI cards (precision/recall/F1/accuracy), a hallucination-detection chart, a metrics chart, and the per-example golden-set table — so the evaluation is visible, not just reported.
+
 ## Stack
 - **Agents:** Node.js + TypeScript (Express), OpenAI-compatible chat completions (any provider via `.env`).
-- **Frontend:** Angular 22 (standalone).
+- **Frontend:** Angular 22 (standalone) + Chart.js (evaluation dashboard).
 - **Data:** `data/golden-set.json` (Phase 2).
 
 ## Run it
@@ -73,6 +75,6 @@ The CLI prints a full JSON result (ad + validation scores + hallucinated claims)
 
 ## Repo layout
 - `agents/` — orchestrator, ad agent, validation agent, LLM client (OpenAI-compatible).
-- `frontend/` — Angular 22 surface.
+- `frontend/` — Angular 22 surface (generate/validate + evaluation dashboard).
 - `data/golden-set.json` — labeled evaluation examples (Phase 2).
 - `docs/architecture.md` — system design, evaluation methodology, and key decisions.
