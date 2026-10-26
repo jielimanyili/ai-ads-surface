@@ -78,3 +78,17 @@ The CLI prints a full JSON result (ad + validation scores + hallucinated claims)
 - `frontend/` — Angular 22 surface (generate/validate + evaluation dashboard).
 - `data/golden-set.json` — labeled evaluation examples (Phase 2).
 - `docs/architecture.md` — system design, evaluation methodology, and key decisions.
+
+## Deploy (static, Vercel)
+
+The frontend deploys as a **static site** to Vercel — the Evaluation Dashboard works out of the box; the generate flow needs the agents backend.
+
+```bash
+cd frontend
+npx vercel          # Root Directory = frontend (vercel.json already configured)
+npx vercel --prod   # production URL
+```
+
+- `frontend/vercel.json` — build command + output dir (`dist/ai-ads-surface/browser`) + SPA rewrite.
+- The **Evaluation Dashboard** is the default view and is fully static (no backend / API key).
+- The **Generate & Validate** view needs the agents backend — set `apiUrl` in `frontend/src/environments/environment.prod.ts` once the backend is deployed.

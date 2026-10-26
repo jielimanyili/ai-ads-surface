@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { EvalDashboardComponent } from './eval-dashboard.component';
+import { environment } from '../environments/environment';
 
 interface Score { metric: string; score: number; rationale: string; passed: boolean; }
 interface Ad { headline: string; body: string; callToAction: string; }
@@ -16,7 +17,7 @@ interface Result { query: string; ad: Ad; validation: Validation; }
   styleUrl: './app.scss'
 })
 export class App {
-  view = signal<'generate' | 'dashboard'>('generate');
+  view = signal<'generate' | 'dashboard'>('dashboard');
   query = signal('');
   loading = signal(false);
   result = signal<Result | null>(null);
@@ -26,8 +27,15 @@ export class App {
     this.loading.set(true);
     this.error.set('');
     this.result.set(null);
+    if (!environment.apiUrl) {
+      this.error.set(
+        'Backend not configured — this is a static demo. Run the agents locally (see README) or deploy the backend and set environment.apiUrl.',
+      );
+      this.loading.set(false);
+      return;
+    }
     try {
-      const res = await fetch('http://localhost:4000/generate', {
+      const res = await fetch(`${environment.apiUrl}/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: this.query() })
