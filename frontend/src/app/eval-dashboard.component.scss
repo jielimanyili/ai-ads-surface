@@ -1,0 +1,86 @@
+:host {
+  display: block;
+}
+
+h2 { margin: 0 0 0.25rem; }
+.sub { color: #555; margin: 0 0 1.5rem; }
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.kpi {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: #fafafa;
+}
+
+.kpi--highlight { border-color: #2563eb; background: #eff6ff; }
+
+.kpi-value { font-size: 1.5rem; font-weight: 700; }
+.kpi-label { font-size: 0.8rem; color: #555; }
+
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.chart-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fafafa;
+}
+
+.chart-card h3 { margin: 0 0 0.5rem; }
+.chart-card canvas { max-height: 260px; }
+
+.examples h3 { margin: 0 0 0.5rem; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+th, td {
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem;
+  text-align: left;
+  vertical-align: top;
+  font-size: 0.9rem;
+}
+
+th {
+  color: #555;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85rem; }
+
+.label {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.label--good { background: #dcfce7; color: #16a34a; }
+.label--hallucinated { background: #fee2e2; color: #dc2626; }
+.label--off_brand { background: #fef3c7; color: #b45309; }
+
+.pass { color: #16a34a; font-weight: 600; }
+.fail { color: #dc2626; font-weight: 600; }
+.note { color: #555; font-size: 0.9rem; }

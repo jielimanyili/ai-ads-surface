@@ -1,0 +1,70 @@
+<h2>Validator performance — LLM-as-judge</h2>
+<p class="sub">
+  Measured against a 12-example hand-labeled golden set (hallucination detection).
+</p>
+
+<section class="kpis">
+  <div class="kpi">
+    <span class="kpi-value">{{ metrics.precision | number: '1.2' }}</span>
+    <span class="kpi-label">Precision</span>
+  </div>
+  <div class="kpi">
+    <span class="kpi-value">{{ metrics.recall | number: '1.2' }}</span>
+    <span class="kpi-label">Recall</span>
+  </div>
+  <div class="kpi kpi--highlight">
+    <span class="kpi-value">{{ metrics.f1 | number: '1.2' }}</span>
+    <span class="kpi-label">F1</span>
+  </div>
+  <div class="kpi">
+    <span class="kpi-value">{{ metrics.accuracy | number: '1.2' }}</span>
+    <span class="kpi-label">Accuracy</span>
+  </div>
+  <div class="kpi">
+    <span class="kpi-value">{{ metrics.agreement }}/{{ metrics.agreementTotal }}</span>
+    <span class="kpi-label">Verdict agreement</span>
+  </div>
+</section>
+
+<section class="charts">
+  <div class="chart-card">
+    <h3>Hallucination detection</h3>
+    <canvas #countsCanvas></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>Metrics</h3>
+    <canvas #metricsCanvas></canvas>
+  </div>
+</section>
+
+<section class="examples">
+  <h3>Per-example results</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Query</th>
+        <th>Ground truth</th>
+        <th>Flagged</th>
+        <th>Verdict</th>
+        <th>Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (e of examples; track e.id) {
+        <tr>
+          <td class="mono">{{ e.id }}</td>
+          <td>{{ e.query }}</td>
+          <td>
+            <span class="label" [ngClass]="'label--' + e.label">{{ e.label }}</span>
+          </td>
+          <td>{{ e.hallucinationFlagged ? '✓' : '—' }}</td>
+          <td [ngClass]="e.overallPass ? 'pass' : 'fail'">
+            {{ e.overallPass ? 'Pass' : 'Fail' }}
+          </td>
+          <td class="note">{{ e.note }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</section>
